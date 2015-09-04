@@ -1,4 +1,4 @@
-# _Shoe_Stores_
+# _Shoe_Stores_Application_
 
 ##### _Create a Shoe_Stores Application. Date of current version: 09/04/15_
 
