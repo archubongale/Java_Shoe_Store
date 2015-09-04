@@ -8,13 +8,13 @@ public class StoreTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-//Test whether the array is empty or nor
+  //Test whether the array is empty or nor
   @Test
   public void all_emptyAtFirst() {
     assertEquals(Store.all().size(), 0);
   }
 
-// Test for override objects
+  // Test for override objects
   @Test
   public void equals_returnsTrueIfNamesAretheSame() {
     Store firstStore = new Store("Walkers", "185 SE Portland");
@@ -42,24 +42,24 @@ public class StoreTest {
     myStore.save();
     assertEquals(Store.all().get(0).getName(),myStore.getName());
   }
-@Test
-public void addBrands_StoreToTheJointTable() {
-  Store myStore = new Store("Walkers","185 SE Portland");
-  myStore.save();
-  Brand myBrand = new Brand("Nike");
-  myBrand.save();
-  myStore.addBrand(myBrand);
-  Brand savedBrand = myStore.getBrands().get(0);
-  assertEquals(savedBrand,myBrand);
-}
+  @Test
+  public void addBrands_StoreToTheJointTable() {
+    Store myStore = new Store("Walkers","185 SE Portland");
+    myStore.save();
+    Brand myBrand = new Brand("Nike");
+    myBrand.save();
+    myStore.addBrand(myBrand);
+    Brand savedBrand = myStore.getBrands().get(0);
+    assertEquals(savedBrand,myBrand);
+  }
 
-@Test
-public void find_returnsCorrectStore() {
-  Store myStore = new Store ("Walkers","185 SE Portland");
-  myStore.save();
-  Store savedStore = Store.find(myStore.getId());
-  assertEquals(myStore,savedStore);
-}
+  @Test
+  public void find_returnsCorrectStore() {
+    Store myStore = new Store ("Walkers","185 SE Portland");
+    myStore.save();
+    Store savedStore = Store.find(myStore.getId());
+    assertEquals(myStore,savedStore);
+  }
 
   @Test
   public void update_ChangesStoreFromDatabase() {
@@ -76,4 +76,4 @@ public void find_returnsCorrectStore() {
     myStore.delete();
     assertEquals(Store.all().size(), 0);
   }
- }
+}

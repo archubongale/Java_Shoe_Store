@@ -32,7 +32,7 @@ public class Brand {
     }else {
       Brand newBrand = (Brand) otherBrand;
       return this.getId() == newBrand.getId() &&
-              this.getName().equals(newBrand.getName());
+      this.getName().equals(newBrand.getName());
     }
   }
   public void save() {
@@ -58,17 +58,27 @@ public class Brand {
     try (Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO stores_brands (store_id,brand_id) VALUES (:store_id,:brand_id)";
       con.createQuery(sql)
-      .addParameter("store_id",store.getId())
-      .addParameter("brand_id",this.getId())
+      .addParameter("store_id",this.getId())
+      .addParameter("brand_id",store.getId())
       .executeUpdate();
     }
   }
-  public List<Store> getStores() {
+  public ArrayList<Store> getStores() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT store.* FROM brands JOIN stores_brands ON (brands.id = stores_brands.brand_id) JOIN stores ON (stores_brands.store_id = stores.id) WHERE brands.id =:id ORDER BY name";
-      return con.createQuery(sql)
-      .addParameter("id",id)
-      .executeAndFetch(Store.class);
+      String sql = "SELECT store_id FROM stores_brands WHERE brand_id = :brand_id";
+      List<Integer> storeIds = con.createQuery(sql)
+      .addParameter("brand_id",this.getId())
+      .executeAndFetch(Integer.class);
+
+      ArrayList<Store> stores = new ArrayList<Store>();
+      for (Integer storeId : storeIds ) {
+        String storeQuery = "SELECT * FROM stores WHERE id = :storeId";
+        Store store = con.createQuery(storeQuery)
+        .addParameter("storeId",storeId)
+        .executeAndFetchFirst(Store.class);
+        stores.add(store);
+      }
+      return stores;
     }
   }
 
@@ -83,12 +93,12 @@ public class Brand {
   }
   public void delete() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM brands WHERE id =:id";
-      con.createQuery(sql)
+      String deleteQuery = "DELETE FROM brands WHERE id =:id";
+      con.createQuery(deleteQuery)
       .addParameter("id",id)
       .executeUpdate();
 
-      String joinDeleteQuery = "DELETE FROM stores_brands WHERE brand_id = :brand_id";
+      String joinDeleteQuery = "DELETE FROM stores_brands WHERE brand_id = :brandId";
       con.createQuery(joinDeleteQuery)
       .addParameter("brandId", this.getId())
       .executeUpdate();
