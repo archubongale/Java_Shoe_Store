@@ -21,22 +21,45 @@ public class StoreTest {
     Store secondStore = new Store("Walkers", "185 SE Portland");
     assertTrue(firstStore.equals(secondStore));
   }
-  //
-  // @Test
-  // public void save_savesObjectIntoDatabase() {
-  //   Store myStore = new Store("Sally", "2015-09-01");
-  //   myStore.save();
-  //   Store savedStore = Store.all().get(0);
-  //   assertTrue(savedStore.equals(myStore));
-  // }
-  //
-  // @Test
-  // public void save_assignsIdToObject() {
-  //   Store myStore = new Store("Sally", "2015-09-01");
-  //   myStore.save();
-  //   Store savedStore = Store.all().get(0);
-  //   assertEquals(myStore.getId(), savedStore.getId());
-  // }
+
+  @Test
+  public void save_savesObjectIntoDatabase() {
+    Store myStore = new Store ("Walkers","185 SE Portland");
+    myStore.save();
+    assertEquals(myStore.all().get(0),myStore);
+  }
+
+  @Test
+  public void getId_returnsCorrectId() {
+    Store myStore = new Store("Walkers","185 SE Portland");
+    myStore.save();
+    assertEquals(Store.all().get(0).getId(),myStore.getId());
+  }
+
+  @Test
+  public void getName_returnsCorrectName() {
+    Store myStore = new Store("Walkers","185 SE Portland");
+    myStore.save();
+    assertEquals(Store.all().get(0).getName(),myStore.getName());
+  }
+@Test
+public void addBrands_StoreToTheJointTable() {
+  Store myStore = new Store("Walkers","185 SE Portland");
+  myStore.save();
+  Brand myBrand = new Brand("Nike");
+  myBrand.save();
+  myStore.addBrand(myBrand);
+  Brand savedBrand = myStore.getBrands().get(0);
+  assertEquals(savedBrand,myBrand);
+}
+
+@Test
+public void find_returnsCorrectStore() {
+  Store myStore = new Store ("Walkers","185 SE Portland");
+  myStore.save();
+  Store savedStore = Store.find(myStore.getId());
+  assertEquals(myStore,savedStore);
+}
 
 //   @Test
 //   public void find_findsStoreInDatabase_true() {
