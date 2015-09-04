@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StoreTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-09-04T19:32:23" hostname="Archanas-MacBook-Pro.local" time="0.42">
+<testsuite name="StoreTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2015-09-04T20:46:54" hostname="Archanas-MacBook-Pro.local" time="0.378">
   <properties/>
-  <testcase name="addBrands_StoreToTheJointTable" classname="StoreTest" time="0.277"/>
-  <testcase name="getName_returnsCorrectName" classname="StoreTest" time="0.032"/>
+  <testcase name="addBrands_StoreToTheJointTable" classname="StoreTest" time="0.173"/>
+  <testcase name="getName_returnsCorrectName" classname="StoreTest" time="0.033"/>
   <testcase name="equals_returnsTrueIfNamesAretheSame" classname="StoreTest" time="0.009"/>
-  <testcase name="save_savesObjectIntoDatabase" classname="StoreTest" time="0.027"/>
-  <testcase name="all_emptyAtFirst" classname="StoreTest" time="0.016"/>
-  <testcase name="getId_returnsCorrectId" classname="StoreTest" time="0.032"/>
+  <testcase name="save_savesObjectIntoDatabase" classname="StoreTest" time="0.026"/>
+  <testcase name="all_emptyAtFirst" classname="StoreTest" time="0.017"/>
+  <testcase name="getId_returnsCorrectId" classname="StoreTest" time="0.026"/>
+  <testcase name="update_ChangesStoreFromDatabase" classname="StoreTest" time="0.033"/>
+  <testcase name="delete_deletesFromDatabase" classname="StoreTest" time="0.033"/>
   <testcase name="find_returnsCorrectStore" classname="StoreTest" time="0.025"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

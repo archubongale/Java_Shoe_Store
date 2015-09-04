@@ -100,12 +100,12 @@ public class Store {
   }
   public void delete() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM stores WHERE id =:id";
-       con.createQuery(sql)
+      String deleteQuery = "DELETE FROM stores WHERE id =:id";
+       con.createQuery(deleteQuery)
       .addParameter("id",id)
       .executeUpdate();
 
-      String joinDeleteQuery = "DELETE FROM stores_brands WHERE store_id = :store_id";
+      String joinDeleteQuery = "DELETE FROM stores_brands WHERE store_id = :storeId";
       con.createQuery(joinDeleteQuery)
       .addParameter("storeId", this.getId())
       .executeUpdate();

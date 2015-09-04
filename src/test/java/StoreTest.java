@@ -61,50 +61,19 @@ public void find_returnsCorrectStore() {
   assertEquals(myStore,savedStore);
 }
 
-//   @Test
-//   public void find_findsStoreInDatabase_true() {
-//     Store myStore = new Store("Sally");
-//     myStore.save();
-//     Store savedStore = Store.find(myStore.getId());
-//     assertTrue(myStore.equals(savedStore));
-//   }
-//
-//   @Test
-//   public void addCourse_addsCourseToStore() {
-//     Course myCourse = new Course("Household chores");
-//     myCourse.save();
-//
-//     Store myStore = new Store("Sally");
-//     myStore.save();
-//
-//     myStore.addCourse(myCourse);
-//     Course savedCourse = myStore.getCategories().get(0);
-//     assertTrue(myCourse.equals(savedCourse));
-//   }
-//
-//   @Test
-//   public void getCategories_returnsAllCategories_ArrayList() {
-//     Course myCourse = new Course("Household chores");
-//     myCourse.save();
-//
-//     Store myStore = new Store("Sally");
-//     myStore.save();
-//
-//     myStore.addCourse(myCourse);
-//     List savedCategories = myStore.getCategories();
-//     assertEquals(savedCategories.size(), 1);
-//   }
-//
-//   @Test
-//   public void delete_deletesAllStoresAndListsAssoicationes() {
-//     Course myCourse = new Course("Household chores");
-//     myCourse.save();
-//
-//     Store myStore = new Store("Sally");
-//     myStore.save();
-//
-//     myStore.addCourse(myCourse);
-//     myStore.delete();
-//     assertEquals(myCourse.getStores().size(), 0);
-//   }
+  @Test
+  public void update_ChangesStoreFromDatabase() {
+    Store myStore = new Store("Walkers","185 SE Portland");
+    myStore.save();
+    myStore.update("Macys");
+    Store savedStore = Store.find(myStore.getId());
+    assertEquals("Macys",savedStore.getName());
+  }
+  @Test
+  public void delete_deletesFromDatabase() {
+    Store myStore = new Store("Walkers","185 SE Portland");
+    myStore.save();
+    myStore.delete();
+    assertEquals(Store.all().size(), 0);
+  }
  }
