@@ -1,0 +1,28 @@
+<h1>Brands</h1>
+
+#if ($editBrand)
+    <form action="/brands/$editBrand.getId()/edit" method="post">
+      <label for="name">Edit brand:</label>
+      <input id="name" name="name" type="text" value="$editBrand.getName()">
+      <button type="submit" class="btn btn-success">Edit brand</button>
+    </form>
+#else
+
+<p>Add a new brand:</p>
+
+<form action="/brands" method="post">
+  <label for="name">Add a brand:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit" class="btn btn-success">Add brand</button>
+</form>
+<br>
+Brands:
+<ol>
+#foreach ($brand in $brands)
+
+ <li><a href="/brands/$brand.getId()">$brand.getName()</a></li>
+#end
+#end
+</ol>
+<p><a href='/'>Home</a></p>
