@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BrandTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2015-09-04T21:52:11" hostname="Archanas-MacBook-Pro.local" time="0.387">
+<testsuite name="BrandTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2015-09-05T00:27:59" hostname="Archanas-MacBook-Pro.local" time="0.327">
   <properties/>
-  <testcase name="update_ChangesBrandFromDatabase" classname="BrandTest" time="0.184"/>
-  <testcase name="getStores_returnsStoresList" classname="BrandTest" time="0.032"/>
-  <testcase name="getName_returnsCorrectName" classname="BrandTest" time="0.028"/>
-  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="BrandTest" time="0.01"/>
+  <testcase name="update_ChangesBrandFromDatabase" classname="BrandTest" time="0.145"/>
+  <testcase name="getStores_returnsStoresList" classname="BrandTest" time="0.025"/>
+  <testcase name="getName_returnsCorrectName" classname="BrandTest" time="0.027"/>
+  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="BrandTest" time="0.009"/>
   <testcase name="save_savesObjectIntoDatabase" classname="BrandTest" time="0.024"/>
-  <testcase name="all_emptyAtFirst" classname="BrandTest" time="0.02"/>
-  <testcase name="getId_returnsCorrectId" classname="BrandTest" time="0.026"/>
-  <testcase name="delete_deletesFromDatabase" classname="BrandTest" time="0.032"/>
-  <testcase name="find_returnsCorrectBrand" classname="BrandTest" time="0.029"/>
+  <testcase name="all_emptyAtFirst" classname="BrandTest" time="0.017"/>
+  <testcase name="getId_returnsCorrectId" classname="BrandTest" time="0.023"/>
+  <testcase name="delete_deletesFromDatabase" classname="BrandTest" time="0.033"/>
+  <testcase name="find_returnsCorrectBrand" classname="BrandTest" time="0.024"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
