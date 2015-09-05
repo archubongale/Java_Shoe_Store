@@ -10,14 +10,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: brands; Type: TABLE; Schema: public; Owner: archanabongale; Tablespace:
+-- Name: brands; Type: TABLE; Schema: public; Owner: archanabongale; Tablespace: 
 --
 
 CREATE TABLE brands (
@@ -63,7 +63,7 @@ ALTER SEQUENCE brands_id_seq OWNED BY brands.id;
 
 
 --
--- Name: stores; Type: TABLE; Schema: public; Owner: archanabongale; Tablespace:
+-- Name: stores; Type: TABLE; Schema: public; Owner: archanabongale; Tablespace: 
 --
 
 CREATE TABLE stores (
@@ -76,7 +76,7 @@ CREATE TABLE stores (
 ALTER TABLE stores OWNER TO archanabongale;
 
 --
--- Name: stores_brands; Type: TABLE; Schema: public; Owner: archanabongale; Tablespace:
+-- Name: stores_brands; Type: TABLE; Schema: public; Owner: archanabongale; Tablespace: 
 --
 
 CREATE TABLE stores_brands (
@@ -163,7 +163,7 @@ COPY brands (id, name) FROM stdin;
 -- Name: brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: archanabongale
 --
 
-SELECT pg_catalog.setval('brands_id_seq', 1, false);
+SELECT pg_catalog.setval('brands_id_seq', 6, true);
 
 
 --
@@ -186,18 +186,18 @@ COPY stores_brands (id, store_id, brand_id) FROM stdin;
 -- Name: stores_brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: archanabongale
 --
 
-SELECT pg_catalog.setval('stores_brands_id_seq', 1, false);
+SELECT pg_catalog.setval('stores_brands_id_seq', 7, true);
 
 
 --
 -- Name: stores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: archanabongale
 --
 
-SELECT pg_catalog.setval('stores_id_seq', 1, false);
+SELECT pg_catalog.setval('stores_id_seq', 4, true);
 
 
 --
--- Name: brands_pkey; Type: CONSTRAINT; Schema: public; Owner: archanabongale; Tablespace:
+-- Name: brands_pkey; Type: CONSTRAINT; Schema: public; Owner: archanabongale; Tablespace: 
 --
 
 ALTER TABLE ONLY brands
@@ -205,7 +205,7 @@ ALTER TABLE ONLY brands
 
 
 --
--- Name: stores_brands_pkey; Type: CONSTRAINT; Schema: public; Owner: archanabongale; Tablespace:
+-- Name: stores_brands_pkey; Type: CONSTRAINT; Schema: public; Owner: archanabongale; Tablespace: 
 --
 
 ALTER TABLE ONLY stores_brands
@@ -213,7 +213,7 @@ ALTER TABLE ONLY stores_brands
 
 
 --
--- Name: stores_pkey; Type: CONSTRAINT; Schema: public; Owner: archanabongale; Tablespace:
+-- Name: stores_pkey; Type: CONSTRAINT; Schema: public; Owner: archanabongale; Tablespace: 
 --
 
 ALTER TABLE ONLY stores
@@ -233,3 +233,4 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
