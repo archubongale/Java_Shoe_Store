@@ -28,85 +28,45 @@ public class AppIntegrationTest extends FluentTest {
     assertThat(pageSource()).contains("Shoe Stores");
   }
 
-//   @Test
-//   public void courseIsDisplayedWhenCreated() {
-//     goTo("http://localhost:4567/");
-//     click("a", withText("Add or view a course"));
-//     fill("#name_number").with("History100");
-//     submit(".btn");
-//     assertThat(pageSource()).contains("History100");
-//   }
+  @Test
+  public void brandFormIsDisplayed() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Add or view a brand"));
+    assertThat(pageSource()).contains("Add a new brand");
+  }
 
-  // @Test
-  //  public void courseIsDeleted() {
-  //   Course myCourse = new Course("History 100");
-  //   myCourse.save();
-  //   goTo("http://localhost:4567/");
-  //   click("a", withText("Delete course"));
-  //   assertThat(pageSource()).doesNotContain("History 100");
-  //  }
 
-  //  @Test
-  //  public void courseIsUpdated() {
-  //    goTo("http://localhost:4567/");
-  //    click("a", withText("Add or view a course"));
-  //    fill("#name_number").with("History100");
-  //    Course myCourse = new Course("History 100");
-  //    myCourse.save();
-  //    click("a", withText("History 100"));
-  //    click("a", withText("Edit this course"));
-  //    fill("#name_number").with("History");
-  //    submit(".btn");
-  //    assertThat(pageSource()).contains("History");
-  //  }
-   //
-  //  @Test
-  //  public void studentIsDisplayedWhenCreated() {
-  //    Course myCourse = new Course("Math");
-  //    myCourse.save();
-  //    goTo("http://localhost:4567/");
-  //    click("a", withText("Math"));
-  //    fill("#name").with("Derrick");
-  //    submit(".btn");
-  //    assertThat(pageSource()).contains("Derrick");
-  //  }
+  @Test
+  public void storeFormIsDisplayed() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Add or view a store"));
+    assertThat(pageSource()).contains("Add a new store");
+  }
 
-  //  @Test
-  //  public void allstudentsDisplayOnCoursePage() {
-  //    Course myCourse = new Course("History 100");
-  //    myCourse.save();
-  //    goTo("http://localhost:4567/");
-  //    click("a", withText("History 100"));
-  //    fill("#studentName").with("Derrick");
-  //    submit(".btn");
-  //    fill("#studentName").with("Marty");
-  //    submit(".btn");
-  //    assertThat(pageSource()).contains("Derrick");
-  //    assertThat(pageSource()).contains("Marty");
-  //  }
-  //
-  //  @Test
-  //  public void studentIsDeleted() {
-  //    Course myCourse = new Course("History 100");
-  //    myCourse.save();
-  //    goTo("http://localhost:4567/");
-  //    click("a", withText("History 100"));
-  //    fill("#studentName").with("Derrick");
-  //    submit(".btn");
-  //    click("a", withText("Delete student"));
-  //    assertThat(pageSource()).doesNotContain("Derrick");
-  //  }
-  //
-  //  @Test
-  //  public void studentIsUpdated(){
-  //    Course myCourse = new Course("History 100");
-  //    myCourse.save();
-  //    goTo("http://localhost:4567/");
-  //    click("a", withText("History 100"));
-  //    fill("#studentName").with("Derrick");
-  //    submit(".btn");
-  //    click("a", withText("Edit student"));
-  //    fill("#studentName").with("Derrick");
-  //    assertThat(pageSource()).contains("Derrick");
-  //  }
-}
+  @Test
+  public void brandIsDisplayedWhenCreated() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Add or view a brand"));
+    fill("#name").with("New Balance");
+    submit(".btn");
+    assertThat(pageSource()).contains("New Balance");
+  }
+
+  @Test
+  public void storeNameIsDisplayedInListWhenCreated() {
+    goTo("http://localhost:4567/stores");
+    fill("#name").with("Target");
+    submit(".btn");
+    assertThat(pageSource()).contains("Target");
+  }
+
+  @Test
+    public void brandHasItsOwnPage() {
+      Brand testBrand = new Brand("New Balance");
+      testBrand.save();
+      goTo("http://localhost:4567/brands");
+      click("a", withText("New Balance"));
+      assertThat(pageSource()).contains("Here are the stores that carry this brand");
+    }
+
+  }

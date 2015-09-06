@@ -1,11 +1,11 @@
 <h1>Brands</h1>
 
 #if ($editBrand)
-    <form action="/brands/$editBrand.getId()/edit" method="post">
-      <label for="name">Edit brand:</label>
-      <input id="name" name="name" type="text" value="$editBrand.getName()">
-      <button type="submit" class="btn btn-success">Edit brand</button>
-    </form>
+<form action="/brands/$editBrand.getId()/edit" method="post">
+  <label for="name">Edit brand:</label>
+  <input id="name" name="name" type="text" value="$editBrand.getName()">
+  <button type="submit" class="btn btn-success">Edit brand</button>
+</form>
 #else
 
 <p>Add a new brand:</p>
@@ -19,10 +19,18 @@
 <br>
 Brands:
 <ol>
-#foreach ($brand in $brands)
+  #foreach ($brand in $brands)
 
- <li><a href="/brands/$brand.getId()">$brand.getName()</a></li>
-#end
-#end
+  <li><a href="/brands/$brand.getId()">$brand.getName()</a></li>
+  <ul>
+    #foreach($store in $brand.getStores())
+    <li><a href="/stores/$store.getId()">$store.getName()</a></li>
+    #end
+  </ul>
+  #end
+  #end
 </ol>
+
+
+
 <p><a href='/'>Home</a></p>

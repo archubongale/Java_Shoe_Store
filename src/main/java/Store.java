@@ -14,9 +14,9 @@ public class Store {
   public String getName() {
     return name;
   }
-   public String getAddress() {
-     return address;
-   }
+  public String getAddress() {
+    return address;
+  }
 
   public Store(String name,String address) {
     this.name = name;
@@ -37,8 +37,8 @@ public class Store {
     }else {
       Store newStore = (Store) otherStore;
       return this.getId() == newStore.getId() &&
-              this.getName().equals(newStore.getName()) &&
-              this.getAddress().equals(newStore.getAddress());
+      this.getName().equals(newStore.getName()) &&
+      this.getAddress().equals(newStore.getAddress());
     }
   }
   public void save() {
@@ -70,21 +70,14 @@ public class Store {
       .executeUpdate();
     }
   }
-  public ArrayList<Brand> getBrands() {
+
+
+  public List<Brand> getBrands() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT brand_id FROM stores_brands WHERE store_id = :store_id";
-      List<Integer> brandIds = con.createQuery(sql)
-      .addParameter("store_id",this.getId())
-      .executeAndFetch(Integer.class);
-      ArrayList<Brand> brands = new ArrayList<Brand>();
-      for (Integer brandId : brandIds ) {
-        String brandQuery = "SELECT * FROM brands WHERE id = :brandId";
-        Brand brand = con.createQuery(brandQuery)
-        .addParameter("brandId",brandId)
-        .executeAndFetchFirst(Brand.class);
-        brands.add(brand);
-      }
-      return brands;
+      String sql = "SELECT brands.* FROM stores JOIN stores_brands ON (stores_brands.store_id = stores.id) JOIN brands ON (stores_brands.brand_id = brands.id) WHERE store_id=:id ";
+      return con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetch(Brand.class);
     }
   }
 
@@ -101,7 +94,7 @@ public class Store {
   public void delete() {
     try (Connection con = DB.sql2o.open()) {
       String deleteQuery = "DELETE FROM stores WHERE id =:id";
-       con.createQuery(deleteQuery)
+      con.createQuery(deleteQuery)
       .addParameter("id",id)
       .executeUpdate();
 

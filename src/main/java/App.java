@@ -40,6 +40,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       List<Brand> brands = Brand.all();
       model.put("brands", brands);
+      model.put("allStores", Store.all());
       model.put("template", "/templates/brands.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
